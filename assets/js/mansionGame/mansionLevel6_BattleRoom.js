@@ -8,7 +8,39 @@ class MansionLevel6_BattleRoom {
         let width = gameEnv.innerWidth;
         let height = gameEnv.innerHeight;
         let path = gameEnv.path;
+
+        const image_src_floor = path + "/images/gamify/tiledFloor.png";
+        const image_data_floor = {
+            name: 'floor',
+            src: image_src_floor,
+            pixels: {height: 540, width: 960}
+        };
+
+        const sprite_src_mc = path + "/images/gamify/playerMove.png";
+        const MC_SCALE_FACTOR = 1.5;
+        const sprite_data_mc = {
+            id: 'mc',
+            src: sprite_src_mc,
+            SCALE_FACTOR: MC_SCALE_FACTOR,
+            STEP_FACTOR: 500,
+            ANIMATION_RATE: 30,
+            INIT_POSITION: {x:0, y: height - (height/MC_SCALE_FACTOR) },
+            pixels: {height: 907, width: 1902},
+            orientation: {rows: 1, columns: 3},
+            // for now I'm just making the animation for all directions the same.
+            down: {row: 0, start:0, columns:3},
+            downRight: {row: 0, start: 0, columns: 3, rotate: Math.PI/16 },
+            downLeft: {row: 0, start: 0, columns: 3, rotate: -Math.PI/16 },
+            left: {row: 0, start: 0, columns: 3 },
+            right: {row: 0, start: 0, columns: 3 },
+            up: {row: 0, start: 0, columns: 3 },
+            upLeft: {row: 0, start: 0, columns: 3, rotate: Math.PI/16 },
+            upRight: {row: 0, start: 0, columns: 3, rotate: -Math.PI/16 },  
+            hitbox: { widthPercentage: 0.5, heightPercentage: 0.4 },
+            keypress: { up: 87, left: 65, down: 83, right: 68 } // W, A, S, D
+        }
     }
+
 }
 
 export default MansionLevel6_BattleRoom;
