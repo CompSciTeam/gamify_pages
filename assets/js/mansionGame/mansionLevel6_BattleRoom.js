@@ -17,15 +17,15 @@ class MansionLevel6_BattleRoom {
         };
 
         const sprite_src_mc = path + "/images/gamify/playerMove.png";
-        const MC_SCALE_FACTOR = 1.5;
+        const MC_SCALE_FACTOR = 1;
         const sprite_data_mc = {
             id: 'mc',
             src: sprite_src_mc,
             SCALE_FACTOR: MC_SCALE_FACTOR,
             STEP_FACTOR: 500,
             ANIMATION_RATE: 30,
-            INIT_POSITION: {x:0, y: height - (height/MC_SCALE_FACTOR) },
-            pixels: {height: 907, width: 1902},
+            INIT_POSITION: {x: (width/2), y: (1.1*height - (height/MC_SCALE_FACTOR))},
+            pixels: {height: 3600, width: 1200},
             orientation: {rows: 1, columns: 3},
             // for now I'm just making the animation for all directions the same.
             down: {row: 0, start:0, columns:3},
@@ -38,8 +38,15 @@ class MansionLevel6_BattleRoom {
             upRight: {row: 0, start: 0, columns: 3, rotate: -Math.PI/16 },  
             hitbox: { widthPercentage: 0.5, heightPercentage: 0.4 },
             keypress: { up: 87, left: 65, down: 83, right: 68 } // W, A, S, D
-        }
-    }
+        };
+
+        this.classes = [
+            { class: GameEnvBackground, data: image_data_floor },
+            { class: Player, data: sprite_data_mc },
+            // todo: add enemy
+        ];
+
+    };
 
 }
 
