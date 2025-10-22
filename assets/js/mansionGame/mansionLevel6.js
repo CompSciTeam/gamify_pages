@@ -48,7 +48,7 @@ class MansionLevel6 {
         const sprite_data_zombie = {
             id: 'ZombieNPC',
             greeting: sprite_greet_zombie_npc,
-            src: sprite_src_mc,
+            src: sprite_src_zombie_npc,
             SCALE_FACTOR: 1,
             ANIMATION_RATE: 20,
             pixels: {width: 3600, width:1200},
@@ -67,7 +67,7 @@ class MansionLevel6 {
                 if (this.dialogueSystem) {
                     this.showReactionDialogue();
                 } else {
-                    console.log(sprite_greet_r2d2);
+                    console.log(sprite_greet_zombie_npc);
                 }           
             },
 
@@ -75,7 +75,7 @@ class MansionLevel6 {
                 if (this.dialogueSystem) {
                     this.showReactionDialogue();
                 } else {
-                    console.log(sprite_greet_r2d2);
+                    console.log(sprite_greet_zombie_npc);
                 }           
             },
 
