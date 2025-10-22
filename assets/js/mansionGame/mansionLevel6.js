@@ -59,7 +59,8 @@ class MansionLevel6 {
             dialogues: [
                 "I heard the boss is waiting for you...",
                 "Enter if you dare.",
-                "So you're his next meal, eh?"
+                "*groans* So you're his next meal, eh?",
+                "Enter if you dare... he's waiting for you..."
             ],
 
             reaction: function() {
@@ -75,9 +76,12 @@ class MansionLevel6 {
                     this.showReactionDialogue();
                 } else {
                     console.log(sprite_greet_r2d2);
-                }
-            }
+                }           
+            },
+
         }
+
+        // todo add sprite for door collision
 
         this.classes = [
             { class: GameEnvBackground, data: image_data_chamber },
