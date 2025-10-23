@@ -1,6 +1,7 @@
 import GameEnvBackground  from "./GameEngine/GameEnvBackground.js";
 import Player from "./GameEngine/Player.js";
 import Npc from './GameEngine/Npc.js';
+import Enemy from './GameEngine/Enemy.js';
 import GameControl from './GameEngine/GameControl.js';
 
 class MansionLevel6_BattleRoom {
