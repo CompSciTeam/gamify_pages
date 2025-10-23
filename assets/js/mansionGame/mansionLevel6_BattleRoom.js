@@ -54,7 +54,7 @@ class MansionLevel6_BattleRoom {
         }
 
         this.classes = [
-            { class: GameEnvBackground, data: image_data_floor },
+            {class: GameEnvBackground, data: image_data_floor},
             {class: Player, data: sprite_data_mc},
             {class: Enemy, data: sprite_enemy_data}
         ];
