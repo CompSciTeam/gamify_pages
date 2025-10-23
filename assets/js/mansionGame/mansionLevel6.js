@@ -1,11 +1,9 @@
-//Sprites and environment for Mansion Level 6
 import GameEnvBackground  from "./GameEngine/GameEnvBackground.js";
 import Player from "./GameEngine/Player.js";
 import Npc from './GameEngine/Npc.js';
 import GameControl from './GameEngine/GameControl.js';
 import MansionLevel6_BattleRoom from './mansionLevel6_BattleRoom.js';
 
-//Mansion Level 6 - Boss Intro Chamber
 class MansionLevel6 {
    constructor(gameEnv){
         let width = gameEnv.innerWidth;
