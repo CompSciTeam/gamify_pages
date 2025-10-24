@@ -20,7 +20,8 @@ class MansionLevel6 {
             name: 'bossintro',
             greeting: "You hear a faint echo from behind the ebony doors.",
             src: image_src_chamber,
-            pixels: {height: 580, width: 1038}
+            pixels: {height: 580, width: 1038},
+            mode: 'contain'
         };
 
         /*
