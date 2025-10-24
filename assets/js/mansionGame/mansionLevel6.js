@@ -24,7 +24,7 @@ class MansionLevel6 {
         };
 
 
-        const sprite_src_mc = path + "/images/gamify/playerMove.png";
+        const sprite_src_mc = path + "/images/gamify/mansionMcMove.png";
         const MC_SCALE_FACTOR = 1;
         const sprite_data_mc = {
             id: 'mc',
