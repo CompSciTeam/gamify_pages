@@ -99,7 +99,7 @@ class Boss extends Enemy {
     scytheAttack() {
         this.isThrowingScythe = true;
         // Put logic for scytheAttack here
-        this.scythes.push(new Scythe(this.gameEnv, nearest.position.x, nearest.position.y, this.position.x, this.position.y));
+        this.scythes.push(new Boomerang(this.gameEnv, nearest.position.x, nearest.position.y, this.position.x, this.position.y));
         // TODO: finish logic for scythe updates & collision with player
         this.isThrowingScythe = false;
     }
