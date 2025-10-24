@@ -90,7 +90,7 @@ class MansionLevel6 {
         const sprite_src_bossdoor = path + "/images/gamify/invisDoorCollisionSprite.png";
         const sprite_greet_bossdoor = "Battle the Reaper? Press E";
         const sprite_data_bossdoor = {
-            id: 'door',
+            id: 'Door',
             greeting: sprite_greet_bossdoor,
             src: sprite_src_bossdoor,
             SCALE_FACTOR: 6,
@@ -124,7 +124,7 @@ class MansionLevel6 {
                 // Show portal dialogue with buttons
                 this.dialogueSystem.showDialogue(
                     "Do you wish to battle the Reaper?",
-                    "door",
+                    "Door",
                     this.spriteData.src
                 );
                 
