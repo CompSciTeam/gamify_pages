@@ -19,6 +19,7 @@ class Reaper extends Enemy {
         this.fireballs = [];
         this.angerModifier = 1;  // Increase this once hp gets low and boss is angry
         this.projectileSpeed = 5;  // This applies to all projectiles
+        this.scythes = [];
     }
 
     // Overwrite the update method to add movement towards the nearest player
@@ -88,6 +89,8 @@ class Reaper extends Enemy {
     scytheAttack() {
         this.isThrowingScythe = true;
         // Put logic for scytheAttack here
+        this.scythes.push(new Scythe(this.gameEnv, nearest.position.x, nearest.position.y, this.position.x, this.position.y));
+        // TODO: finish logic for scythe updates & collision with player
         this.isThrowingScythe = false;
     }
 
@@ -111,8 +114,7 @@ class Scythe extends GameObject {
         super(gameEnv);
         // Add code here for the Scythe the Reaper weilds
 
-        this.xpos = sourcex;
-        this.ypos = sourcey;
+        // finalized ellipse attributes, DO NOT CHANGE this - anish + tinkerers
         this.target_coords = (targetx, targety); // player coords at scythe thrown
         this.source_coords = (sourcex, sourcey); // reaper coords at scythe thrown
         this.ellipse_center = ((targetx+sourcex)/2, (targety+sourcey)/2);
@@ -129,7 +131,7 @@ class Scythe extends GameObject {
             this.revComplete = true;
             return true; // already reached boss
         } else {
-            this.radian_prog += .05;
+            this.radian_prog += .05; // experiment with diff radian increments to change speed
             let x_coord = (
                 this.ellipse_center[0] + 
                 (this.ellipse_width/2)*Math.cos(this.radian_prog)*Math.cos(this.ellipse_tilt) -
@@ -142,8 +144,8 @@ class Scythe extends GameObject {
                 (this.ellipse_height)*Math.sin(this.radian_prog)*Math.cos(this.ellipse_tilt)
             );
 
-            this.xpos = x_coord;
-            this.ypos = y_coord;
+            this.position.x = x_coord;
+            this.position.y = y_coord;
 
         }
     }  
