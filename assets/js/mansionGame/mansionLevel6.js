@@ -76,7 +76,7 @@ class MansionLevel6 {
             keypress: { up: 87, left: 65, down: 83, right: 68 } // W, A, S, D
         };
 
-
+        /*
         const sprite_src_zombie_npc = path + "/images/gamify/zombieNpc.png";
         const sprite_greet_zombie_npc = "I heard the boss is waiting for you... enter if you dare.";
         const sprite_data_zombie = {
@@ -113,6 +113,7 @@ class MansionLevel6 {
             },
 
         }
+        */
 
         // invisible sprite for door collision that handles going to lv6 battle room
 
@@ -125,7 +126,7 @@ class MansionLevel6 {
             SCALE_FACTOR: 6,
             ANIMATION_RATE: 100,
             pixels: {width: 2029, height: 2025},
-            INIT_POSITION: { x: (width * 2 / 5), y: (height * 1 / 10)},
+            INIT_POSITION: { x: (width * 2 / 5), y: (height / 2)},
             orientation: {rows: 1, columns: 1 },
             down: {row: 0, start: 0, columns: 1 },
             hitbox: { widthPercentage: 0.1, heightPercentage: 0.2 },
