@@ -115,7 +115,7 @@ class MansionLevel6 {
 
         // invisible sprite for door collision that handles going to lv6 battle room
 
-        const sprite_src_bossdoor = path + "/images/gamify/invisDoorCollisionSprite.png";
+        const sprite_src_bossdoor = path + "/images/gamify/testDoorCollisionSprite.png";
         const sprite_greet_bossdoor = "Battle the Reaper? Press E";
         const sprite_data_bossdoor = {
             id: 'Door',
