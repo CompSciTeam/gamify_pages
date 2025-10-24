@@ -123,7 +123,7 @@ class MansionLevel6 {
             id: 'Door',
             greeting: sprite_greet_bossdoor,
             src: sprite_src_bossdoor,
-            SCALE_FACTOR: 0.5,
+            SCALE_FACTOR: 1.5,
             ANIMATION_RATE: 100,
             pixels: {width: 2029, height: 2025},
             //INIT_POSITION: { x: (width * 2 / 5), y: (height / 2)},  // This is the old init position
