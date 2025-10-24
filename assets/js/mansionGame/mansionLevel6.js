@@ -74,9 +74,6 @@ class MansionLevel6 {
             hitbox: { widthPercentage: 0.45, heightPercentage: 0.2 },
             keypress: { up: 87, left: 65, down: 83, right: 68 } // W, A, S, D
         };
-            
-
-
 
 
         const sprite_src_zombie_npc = path + "/images/gamify/zombieNpc.png";
