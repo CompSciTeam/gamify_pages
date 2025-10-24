@@ -107,10 +107,46 @@ class Reaper extends Enemy {
 
 // Template class -- VERIFY THIS
 class Scythe extends GameObject {
-    constructor(gameEnv = null) {
+    constructor(gameEnv = null, targetx, targety, sourcex, sourcey) {
         super(gameEnv);
         // Add code here for the Scythe the Reaper weilds
+
+        this.xpos = sourcex;
+        this.ypos = sourcey;
+        this.target_coords = (targetx, targety); // player coords at scythe thrown
+        this.source_coords = (sourcex, sourcey); // reaper coords at scythe thrown
+        this.ellipse_center = ((targetx+sourcex)/2, (targety+sourcey)/2);
+        this.ellipse_width = Math.sqrt((targetx-sourcex)**2 + (targety-sourcey)**2);
+        this.ellipse_height = this.ellipse_height/20;
+        this.ellipse_tilt = Math.atan((sourcey-targety)/(sourcex-targetx));
+        this.radian_prog = 0;
+
+        this.revComplete = false;
     }
+
+    update(){
+        if (this.radian_prog > Math.PI*2){
+            this.revComplete = true;
+            return true; // already reached boss
+        } else {
+            this.radian_prog += .05;
+            let x_coord = (
+                this.ellipse_center[0] + 
+                (this.ellipse_width/2)*Math.cos(this.radian_prog)*Math.cos(this.ellipse_tilt) -
+                (this.ellipse_height)*Math.sin(this.radian_prog)*Math.sin(this.ellipse_tilt)
+            );
+
+            let y_coord = (
+                this.ellipse_center[1] +
+                (this.ellipse_width/2)*Math.cos(this.radian_prog)*Math.sin(this.ellipse_tilt) +
+                (this.ellipse_height)*Math.sin(this.radian_prog)*Math.cos(this.ellipse_tilt)
+            );
+
+            this.xpos = x_coord;
+            this.ypos = y_coord;
+
+        }
+    }  
 }
 
 
