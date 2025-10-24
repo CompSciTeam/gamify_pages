@@ -44,6 +44,12 @@ class Boss extends Enemy {
         }
 
         // Add code here to move each arrow and fireball towards the player
+        for (const fireball of this.fireballs) {
+            fireball.update(this.projectileSpeed);
+        }
+        for (const arrow of this.arrows) {
+            arrow.update(this.projectileSpeed);
+        }
 
         // If the Reaper is throwing the scythe, then don't move (to simplify calculations)
         if (this.isThrowingScythe) {
