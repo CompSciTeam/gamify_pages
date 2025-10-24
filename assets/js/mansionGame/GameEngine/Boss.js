@@ -1,5 +1,11 @@
 import Enemy from './Enemy.js';
 import GameObject from './GameObject.js';
+import Character from './Character.js';  // We do this as a Charecter can actually draw itself to the screen
+
+/*  This is a file for the Game Engine made by the Tinkerers (lvl6)
+    Do not delete this file.
+    - Samarth (and the rest of the Tinkerers)
+*/
 
 // The Reaper is a more powerful enemy that moves towards the player and performs various attacks
 class Reaper extends Enemy {
@@ -109,14 +115,17 @@ class Scythe extends GameObject {
 
 
 // Template class -- VERIFY THIS
-class Projectile extends GameObject {
-    constructor(speed, gameEnv = null) {
-        super(gameEnv);
+class Projectile extends Character {
+    constructor(speed, data = null, gameEnv = null) {
+        super(data, gameEnv);
         this.speed = speed;
     }
 
     // The function to make the player move towards the projectile
     update(speed) {
+        // Draw the projectile to the screen
+        this.draw();
+
         /* Direct copy-paste from the Enderman in the adventure game -- VERIFY THIS WORKS
         Also clean this up later to be a global function that can be used by both Projectile class & the Reaper class. */
         // Find all player objects
