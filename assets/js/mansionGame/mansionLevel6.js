@@ -61,7 +61,7 @@ class MansionLevel6 {
             SCALE_FACTOR: CHILLGUY_SCALE_FACTOR,
             STEP_FACTOR: 1000,
             ANIMATION_RATE: 50,
-            INIT_POSITION: { x: 0, y: height - (height/CHILLGUY_SCALE_FACTOR) }, 
+            INIT_POSITION: { x: (width/2), y: height - (height/CHILLGUY_SCALE_FACTOR) }, 
             pixels: {height: 384, width: 512},
             orientation: {rows: 3, columns: 4 },
             down: {row: 0, start: 0, columns: 3 },
@@ -123,7 +123,7 @@ class MansionLevel6 {
             id: 'Door',
             greeting: sprite_greet_bossdoor,
             src: sprite_src_bossdoor,
-            SCALE_FACTOR: 1.5,
+            SCALE_FACTOR: 6,
             ANIMATION_RATE: 100,
             pixels: {width: 2029, height: 2025},
             //INIT_POSITION: { x: (width * 2 / 5), y: (height / 2)},  // This is the old init position
