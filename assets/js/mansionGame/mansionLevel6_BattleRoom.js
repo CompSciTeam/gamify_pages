@@ -12,7 +12,7 @@ class MansionLevel6_BattleRoom {
         const image_data_floor = {
             name: 'floor',
             src: image_src_floor,
-            pixels: {height: 540, width: 960}
+            pixels: {height: 341, width: 498}
         };
 
         const sprite_src_mc = path + "/images/gamify/playerMove.png";
