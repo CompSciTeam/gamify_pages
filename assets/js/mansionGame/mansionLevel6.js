@@ -23,7 +23,7 @@ class MansionLevel6 {
             pixels: {height: 341, width: 498}
         };
 
-
+        /*
         const sprite_src_mc = path + "/images/gamify/mansionMcMove.png";
         const MC_SCALE_FACTOR = 1;
         const sprite_data_mc = {
@@ -32,7 +32,7 @@ class MansionLevel6 {
             SCALE_FACTOR: MC_SCALE_FACTOR,
             STEP_FACTOR: 500,
             ANIMATION_RATE: 30,
-            INIT_POSITION: {x: (width/2), y: (1.1*height - (height/MC_SCALE_FACTOR))},
+            INIT_POSITION: {x: (width/2), y: (height/2)},
             pixels: {height: 3600, width: 1200},
             orientation: {rows: 1, columns: 3},
             // for now I'm just making the animation for all directions the same.
@@ -47,6 +47,37 @@ class MansionLevel6 {
             hitbox: { widthPercentage: 0.5, heightPercentage: 0.4 },
             keypress: { up: 87, left: 65, down: 83, right: 68 } // W, A, S, D
         };
+        */
+
+        
+        
+        const sprite_src_chillguy = path + "/images/gamify/chillguy.png"; // be sure to include the path
+        const CHILLGUY_SCALE_FACTOR = 5;
+        const sprite_data_chillguy = {
+            id: 'Chill Guy',
+            greeting: "Hi I am Chill Guy, the desert wanderer. I am looking for wisdom and adventure!",
+            src: sprite_src_chillguy,
+            SCALE_FACTOR: CHILLGUY_SCALE_FACTOR,
+            STEP_FACTOR: 1000,
+            ANIMATION_RATE: 50,
+            INIT_POSITION: { x: 0, y: height - (height/CHILLGUY_SCALE_FACTOR) }, 
+            pixels: {height: 384, width: 512},
+            orientation: {rows: 3, columns: 4 },
+            down: {row: 0, start: 0, columns: 3 },
+            downRight: {row: 1, start: 0, columns: 3, rotate: Math.PI/16 },
+            downLeft: {row: 2, start: 0, columns: 3, rotate: -Math.PI/16 },
+            left: {row: 2, start: 0, columns: 3 },
+            right: {row: 1, start: 0, columns: 3 },
+            up: {row: 3, start: 0, columns: 3 },
+            upLeft: {row: 2, start: 0, columns: 3, rotate: Math.PI/16 },
+            upRight: {row: 1, start: 0, columns: 3, rotate: -Math.PI/16 },
+            hitbox: { widthPercentage: 0.45, heightPercentage: 0.2 },
+            keypress: { up: 87, left: 65, down: 83, right: 68 } // W, A, S, D
+        };
+            
+
+
+
 
         const sprite_src_zombie_npc = path + "/images/gamify/zombieNpc.png";
         const sprite_greet_zombie_npc = "I heard the boss is waiting for you... enter if you dare.";
@@ -221,43 +252,12 @@ class MansionLevel6 {
 
         this.classes = [
             { class: GameEnvBackground, data: image_data_chamber },
-            { class: Player, data: sprite_data_mc },
+            { class: Player, data: sprite_data_chillguy },
             { class: Npc, data: sprite_data_zombie},
             { class: Npc, data: sprite_data_bossdoor}
         ];
 
     };
-
-    // Called by GameLevel.create() if present — start level-specific resources (music)
-    initialize() {
-        try {
-            const basePath = (this.gameEnv && this.gameEnv.path) ? this.gameEnv.path : "";
-            const musicSrc = basePath + "/assets/js/sounds/legendZelda.mp3";
-            this.music = new Audio(musicSrc);
-            this.music.loop = true;
-            // sensible default volume; can be adjusted elsewhere
-            this.music.volume = 0.5;
-            // Play and safely handle user gesture autoplay blocks
-            this.music.play().catch(e => console.log("Music play error:", e));
-        } catch (e) {
-            console.log("Error initializing level 6 music:", e);
-        }
-    }
-
-    // Called by GameLevel.destroy() — stop music and free resources
-    destroy() {
-        try {
-            if (this.music) {
-                this.music.pause();
-                try { this.music.currentTime = 0; } catch(e) {}
-                // remove source to release memory
-                try { this.music.src = ""; } catch(e) {}
-                this.music = null;
-            }
-        } catch (e) {
-            console.log("Error destroying level 6 music:", e);
-        }
-    }
 }
 
 export default MansionLevel6;
