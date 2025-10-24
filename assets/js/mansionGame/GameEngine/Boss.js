@@ -94,13 +94,13 @@ class Reaper extends Enemy {
     // This is the fireball attack, create a new Fireball
     fireballAttack() {
         // Add attack logic here
-        this.fireballs.push(new Fireball());
+        this.fireballs.push(new Projectile());
     }
 
     // This is the arrow attak, create a new arrow
     arrowAttack() {
         // Add attack logic here
-        this.arrows.push(new Arrow());
+        this.arrows.push(new Projectile());
     }
 }
 
