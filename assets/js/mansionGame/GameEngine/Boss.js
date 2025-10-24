@@ -1,14 +1,18 @@
 import Enemy from './Enemy.js';
-import GameObject from './GameObject.js';
-import Character from './Character.js';  // We do this as a Charecter can actually draw itself to the screen
+import Boomerang from './Boomerang.js';
+import Projectile from './Projectile.js';
 
 /*  This is a file for the Game Engine made by the Tinkerers (lvl6)
     Do not delete this file.
-    - Samarth (and the rest of the Tinkerers)
+    - Tinkerers
+
+    Boomerang class: used to make the scythe
+    Projectile class: used to make the arrows/fireballs
+
 */
 
 // The Reaper is a more powerful enemy that moves towards the player and performs various attacks
-class Reaper extends Enemy {
+class Boss extends Enemy {
     constructor(data = null, gameEnv = null) {
         super(data, gameEnv);
         this.stage = 1;
@@ -107,93 +111,4 @@ class Reaper extends Enemy {
     }
 }
 
-
-// Template class -- VERIFY THIS
-class Scythe extends GameObject {
-    constructor(gameEnv = null, targetx, targety, sourcex, sourcey) {
-        super(gameEnv);
-        // Add code here for the Scythe the Reaper weilds
-
-        // finalized ellipse attributes, DO NOT CHANGE this - anish + tinkerers
-        this.target_coords = (targetx, targety); // player coords at scythe thrown
-        this.source_coords = (sourcex, sourcey); // reaper coords at scythe thrown
-        this.ellipse_center = ((targetx+sourcex)/2, (targety+sourcey)/2);
-        this.ellipse_width = Math.sqrt((targetx-sourcex)**2 + (targety-sourcey)**2);
-        this.ellipse_height = this.ellipse_height/20;
-        this.ellipse_tilt = Math.atan((sourcey-targety)/(sourcex-targetx));
-        this.radian_prog = 0;
-
-        this.revComplete = false;
-    }
-
-    update(){
-        if (this.radian_prog > Math.PI*2){
-            this.revComplete = true;
-            return true; // already reached boss
-        } else {
-            this.radian_prog += .05; // experiment with diff radian increments to change speed
-            let x_coord = (
-                this.ellipse_center[0] + 
-                (this.ellipse_width/2)*Math.cos(this.radian_prog)*Math.cos(this.ellipse_tilt) -
-                (this.ellipse_height)*Math.sin(this.radian_prog)*Math.sin(this.ellipse_tilt)
-            );
-
-            let y_coord = (
-                this.ellipse_center[1] +
-                (this.ellipse_width/2)*Math.cos(this.radian_prog)*Math.sin(this.ellipse_tilt) +
-                (this.ellipse_height)*Math.sin(this.radian_prog)*Math.cos(this.ellipse_tilt)
-            );
-
-            this.position.x = x_coord;
-            this.position.y = y_coord;
-
-        }
-    }  
-}
-
-
-// Template class -- VERIFY THIS
-class Projectile extends Character {
-    constructor(speed, data = null, gameEnv = null) {
-        super(data, gameEnv);
-        this.speed = speed;
-    }
-
-    // The function to make the player move towards the projectile
-    update(speed) {
-        // Draw the projectile to the screen
-        this.draw();
-
-        /* Direct copy-paste from the Enderman in the adventure game -- VERIFY THIS WORKS
-        Also clean this up later to be a global function that can be used by both Projectile class & the Reaper class. */
-        // Find all player objects
-        const players = this.gameEnv.gameObjects.filter(obj => 
-            obj.constructor.name === 'Player'
-        );
-
-        if (players.length === 0) return;
-        
-        // Find nearest player
-        let nearest = players[0];
-        let minDist = Infinity;
-
-        for (const player of players) {
-            const dx = player.position.x - this.position.x;
-            const dy = player.position.y - this.position.y;
-            const dist = Math.sqrt(dx*dx + dy*dy);
-            if (dist < minDist) {
-                minDist = dist;
-                nearest = player;
-            }
-        }
-
-        // Move towards nearest player
-        const dx = nearest.position.x - this.position.x;
-        const dy = nearest.position.y - this.position.y;
-        const angle = Math.atan2(dy, dx);
-
-        // Update position
-        this.position.x += Math.cos(angle) * speed;
-        this.position.y += Math.sin(angle) * speed;
-    }
-}
+export default Boss;
