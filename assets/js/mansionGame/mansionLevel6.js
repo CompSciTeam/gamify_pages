@@ -252,7 +252,7 @@ class MansionLevel6 {
         this.classes = [
             { class: GameEnvBackground, data: image_data_chamber },
             { class: Player, data: sprite_data_chillguy },
-            { class: Npc, data: sprite_data_zombie},
+            // { class: Npc, data: sprite_data_zombie},
             { class: Npc, data: sprite_data_bossdoor}
         ];
 
