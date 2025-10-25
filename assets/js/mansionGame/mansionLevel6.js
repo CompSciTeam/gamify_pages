@@ -161,7 +161,7 @@ class MansionLevel6 {
                                 document.body.appendChild(fadeOverlay);
                                 
                                 console.log("Starting music...");
-                                const audio = new Audio('{{ site.baseurl }}/assets/sounds/mansionGame/SkeletonLord.mp3');
+                                const audio = new Audio('/assets/sounds/mansionGame/SkeletonLord.mp3');
                                 audio.play()
                                     .then(() => {
                                         console.log('Playing audio...');
