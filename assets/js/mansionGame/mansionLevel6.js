@@ -33,7 +33,7 @@ class MansionLevel6 {
             greeting: "Hi, I am Spook.",
             src: sprite_src_mc,
             SCALE_FACTOR: MC_SCALE_FACTOR,
-            STEP_FACTOR: 1500,
+            STEP_FACTOR: 2500,
             ANIMATION_RATE: 10,
             INIT_POSITION: { x: (width / 2 - width / (5 * MC_SCALE_FACTOR)), y: height - (height / MC_SCALE_FACTOR)}, 
             pixels: {height: 2400, width: 3600},
@@ -262,17 +262,20 @@ class MansionLevel6 {
                                         
                                         // Fade out overlay after transition
                                         setTimeout(() => {
+                                            // Fade out both text and overlay together
                                             fadeOverlay.style.transition = `opacity ${fadeOutMs}ms ease-in-out`;
+                                            transitionText.style.transition = `opacity ${fadeOutMs}ms ease-in-out`;
+                                            
                                             fadeOverlay.style.opacity = '0';
-                                            // also fade and remove the transition text
-                                            if (transitionText) {
-                                                transitionText.style.opacity = '0';
-                                            }
+                                            transitionText.style.opacity = '0';
+
+                                            // Remove after fade-out completes
                                             setTimeout(() => {
                                                 try { document.body.removeChild(fadeOverlay); } catch(e) {}
-                                                try { if (transitionText) document.body.removeChild(transitionText); } catch(e) {}
-                                            }, fadeOutMs + 100);
-                                        }, 500);
+                                                try { document.body.removeChild(transitionText); } catch(e) {}
+                                            }, fadeOutMs + 150);
+                                        }, waitMs + 300); // <- happens after fade-in + typing finishes
+                                        
                                     }, waitMs);
                                 });
                             }
