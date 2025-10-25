@@ -255,10 +255,7 @@ class MansionLevel6 {
                                         
                                         // Make sure game is not paused
                                         gameControl.isPaused = false;
-                                        
-                                        // Start the End level with the same control
-                                        console.log("Transitioning to battle room level...");
-                                        gameControl.transitionToLevel();
+                                    
                                         
                                         // Fade out overlay after transition (with untype animation)
                                         setTimeout(() => {
@@ -282,14 +279,14 @@ class MansionLevel6 {
                                                     setTimeout(() => {
                                                         try { document.body.removeChild(fadeOverlay); } catch (e) {}
                                                         try { document.body.removeChild(transitionText); } catch (e) {}
-
-                                                        // Now safely start the battle level
-                                                        console.log("Transitioning to battle room level...");
-                                                        gameControl.transitionToLevel();
                                                     }, fadeOutMs + 150);
                                                 }
                                             }, untypeSpeed);
                                         }, waitMs + 300);
+
+                                        // Start the boss fight with the same control
+                                        console.log("Transitioning to battle room level...");
+                                        gameControl.transitionToLevel();
 
 
                                     }, waitMs);
