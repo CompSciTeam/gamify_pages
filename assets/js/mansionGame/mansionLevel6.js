@@ -154,6 +154,8 @@ class MansionLevel6 {
                                 
                                 // Create fade overlay for transition
                                 const fadeOverlay = document.createElement('div');
+                                const fadeInMs = 2000; // longer fade in
+                                const fadeOutMs = 1200; // fade out duration
                                 Object.assign(fadeOverlay.style, {
                                     position: 'fixed',
                                     top: '0',
@@ -162,56 +164,70 @@ class MansionLevel6 {
                                     height: '100%',
                                     backgroundColor: '#000',
                                     opacity: '0',
-                                    transition: 'opacity 1s ease-in-out',
+                                    transition: `opacity ${fadeInMs}ms ease-in-out`,
                                     zIndex: '9999'
                                 });
                                 document.body.appendChild(fadeOverlay);
-                                
+
                                 console.log("Starting music...");
                                 const audio = new Audio(path + "/assets/sounds/mansionGame/SkeletonLord.mp3");
-                                audio.play()
-                                    .then(() => {
-                                        console.log('Playing audio...');
-                                    })
-                                    .catch(error => {
-                                        console.error('Failed to play audio:', error);
-                                });
+                                audio.play().catch(error => console.error('Failed to play audio:', error));
 
                                 console.log("Starting battle level transition...");
-                                
-
 
                                 // Fade in
                                 requestAnimationFrame(() => {
                                     fadeOverlay.style.opacity = '1';
-                                            
-                                    // Create a centered transition text that appears during the fade
+
+                                    // Create a centered transition text that will type itself
                                     const transitionText = document.createElement('div');
-                                    transitionText.textContent = 'YOUR DESTINY AWAITS';
+                                    const fullText = 'YOUR DESTINY AWAITS';
+                                    transitionText.textContent = '';
+                                    const typingSpeed = 80; // ms per char
                                     Object.assign(transitionText.style, {
                                         position: 'fixed',
                                         top: '50%',
                                         left: '50%',
                                         transform: 'translate(-50%, -50%)',
-                                        color: '#fff',
+                                        color: 'rgba(255,255,255,1)',
                                         fontSize: '6vw',
-                                        fontWeight: '700',
+                                        fontWeight: '800',
                                         textAlign: 'center',
                                         zIndex: '10000',
                                         pointerEvents: 'none',
                                         opacity: '0',
-                                        transition: 'opacity 300ms ease-in-out',
-                                        textShadow: '0 2px 6px rgba(0,0,0,0.8)'
+                                        transition: `opacity ${Math.min(600, fadeOutMs)}ms ease-in-out`,
+                                        textShadow: '0 3px 8px rgba(0,0,0,0.85)',
+                                        letterSpacing: '0.05em'
                                     });
 
                                     document.body.appendChild(transitionText);
 
-                                    // Fade the text in shortly after the overlay starts fading
+                                    // Fade the text in so characters appear as they type
                                     requestAnimationFrame(() => {
                                         transitionText.style.opacity = '1';
                                     });
 
-                                    // After fade in, transition to End level
+                                    // Typewriter effect
+                                    let charIndex = 0;
+                                    let typingInterval = null;
+                                    const startTyping = () => {
+                                        typingInterval = setInterval(() => {
+                                            transitionText.textContent += fullText.charAt(charIndex);
+                                            charIndex++;
+                                            if (charIndex >= fullText.length) {
+                                                clearInterval(typingInterval);
+                                                typingInterval = null;
+                                            }
+                                        }, typingSpeed);
+                                    };
+
+                                    startTyping();
+
+                                    // Compute when to perform the level transition: wait until both fadeIn and typing complete
+                                    const typingDuration = fullText.length * typingSpeed;
+                                    const waitMs = Math.max(fadeInMs, typingDuration) + 800; // small hold after
+
                                     setTimeout(() => {
                                         // Clean up current level properly
                                         if (gameControl.currentLevel) {
@@ -244,8 +260,9 @@ class MansionLevel6 {
                                         console.log("Transitioning to battle room level...");
                                         gameControl.transitionToLevel();
                                         
-                                        // Fade out overlay
+                                        // Fade out overlay after transition
                                         setTimeout(() => {
+                                            fadeOverlay.style.transition = `opacity ${fadeOutMs}ms ease-in-out`;
                                             fadeOverlay.style.opacity = '0';
                                             // also fade and remove the transition text
                                             if (transitionText) {
@@ -254,9 +271,9 @@ class MansionLevel6 {
                                             setTimeout(() => {
                                                 try { document.body.removeChild(fadeOverlay); } catch(e) {}
                                                 try { if (transitionText) document.body.removeChild(transitionText); } catch(e) {}
-                                            }, 1000);
+                                            }, fadeOutMs + 100);
                                         }, 500);
-                                    }, 1000);
+                                    }, waitMs);
                                 });
                             }
                         }
