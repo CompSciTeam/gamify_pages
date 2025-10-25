@@ -15,6 +15,7 @@ class MansionLevel6 {
         let height = gameEnv.innerHeight;
         let path = gameEnv.path;
 
+        // This is the background image data
         const image_src_chamber = path + "/images/gamify/bgBossIntroChamber.png"
         const image_data_chamber = {
             name: 'bossintro',
@@ -24,6 +25,7 @@ class MansionLevel6 {
             mode: 'stretch'
         };
         
+        // This is the data for the player
         const sprite_src_mc = path + "/images/gamify/spookMcWalk.png"; // be sure to include the path
         const MC_SCALE_FACTOR = 6;
         const sprite_data_mc = {
@@ -33,39 +35,40 @@ class MansionLevel6 {
             SCALE_FACTOR: MC_SCALE_FACTOR,
             STEP_FACTOR: 1500,
             ANIMATION_RATE: 10,
-            INIT_POSITION: { x: (width/2 - width/(5*MC_SCALE_FACTOR)), y: height - (height/MC_SCALE_FACTOR) }, 
+            INIT_POSITION: { x: (width / 2 - width / (5 * MC_SCALE_FACTOR)), y: height - (height / MC_SCALE_FACTOR)}, 
             pixels: {height: 2400, width: 3600},
-            orientation: {rows: 2, columns: 3 },
-            down: {row: 1, start: 0, columns: 3 },
-            downRight: {row: 1, start: 0, columns: 3, rotate: Math.PI/16 },
-            downLeft: {row: 0, start: 0, columns: 3, rotate: -Math.PI/16 },
-            left: {row: 0, start: 0, columns: 3 },
-            right: {row: 1, start: 0, columns: 3 },
-            up: {row: 1, start: 0, columns: 3 },
-            upLeft: {row: 0, start: 0, columns: 3, rotate: Math.PI/16 },
-            upRight: {row: 1, start: 0, columns: 3, rotate: -Math.PI/16 },
-            hitbox: { widthPercentage: 0.45, heightPercentage: 0.2 },
-            keypress: { up: 87, left: 65, down: 83, right: 68 } // W, A, S, D
+            orientation: {rows: 2, columns: 3},
+            down: {row: 1, start: 0, columns: 3},
+            downRight: {row: 1, start: 0, columns: 3, rotate: Math.PI/16},
+            downLeft: {row: 0, start: 0, columns: 3, rotate: -Math.PI/16},
+            left: {row: 0, start: 0, columns: 3},
+            right: {row: 1, start: 0, columns: 3},
+            up: {row: 1, start: 0, columns: 3},
+            upLeft: {row: 0, start: 0, columns: 3, rotate: Math.PI/16},
+            upRight: {row: 1, start: 0, columns: 3, rotate: -Math.PI/16},
+            hitbox: {widthPercentage: 0.45, heightPercentage: 0.2},
+            keypress: {up: 87, left: 65, down: 83, right: 68} // W, A, S, D
         };
 
         /*
+        // This is the data for the zombie NPC charecter
         const sprite_src_zombie_npc = path + "/images/gamify/zombieNpc.png";
         const sprite_greet_zombie_npc = "I heard the boss is waiting for you... enter if you dare.";
         const sprite_data_zombie = {
             id: 'ZombieNPC',
             greeting: sprite_greet_zombie_npc,
             src: sprite_src_zombie_npc,
-            SCALE_FACTOR: 0.2,
+            SCALE_FACTOR: 5,
             ANIMATION_RATE: 20,
-            pixels: {width: 3600, width:1200},
-            INIT_POSITION: { x: (width / 2), y: (height / 2)},
+            pixels: {height: 1200, width: 3600},
+            INIT_POSITION: {x: (width / 2), y: (height / 2)},
             orientation: {rows: 1, columns: 3},
-            left: {row: 0, start:0, columns:3},
+            left: {row: 0, start: 0, columns: 3},
             hitbox: {widthPercentage: 0.3, heightPercentage: 0.5},
-            dialogues: [
+            dialogues: [  // The Zombie needs to warn the player against going through the doors
                 "I heard the boss is waiting for you...",
                 "Enter if you dare... he's waiting for you...",
-                "Don't go in! I heard the Reaper himself was in there.",
+                "Don't go in! I heard the Reaper himself was in there."
             ],
 
             reaction: function() {
@@ -76,19 +79,19 @@ class MansionLevel6 {
                 }           
             },
 
+            // Make the zombie tell the player what it needs to say
             interact: function() {
                 if (this.dialogueSystem) {
                     this.showReactionDialogue();
                 } else {
                     console.log(sprite_greet_zombie_npc);
                 }           
-            },
+            }
 
         }
         */
 
         // invisible sprite for door collision that handles going to lv6 battle room
-
         const sprite_src_bossdoor = path + "/images/gamify/invisDoorCollisionSprite.png";
         const sprite_greet_bossdoor = "Battle the Reaper? Press E";
         const sprite_data_bossdoor = {
@@ -114,6 +117,7 @@ class MansionLevel6 {
                 // Don't show any reaction dialogue - this prevents the first alert
                 // The interact function will handle all dialogue instead
             },
+            // Ask the player wether they want to enter the doors-- if they do, move to the battle room
             interact: function() {
                 // Clear any existing dialogue first to prevent duplicates
                 if (this.dialogueSystem && this.dialogueSystem.isDialogueOpen()) {
@@ -234,12 +238,12 @@ class MansionLevel6 {
         }
         
 
-
+        // This is every sprite we want the game engine to render, and with whatever data
         this.classes = [
-            { class: GameEnvBackground, data: image_data_chamber },
-            { class: Player, data: sprite_data_mc },
-            // { class: Npc, data: sprite_data_zombie},
-            { class: Npc, data: sprite_data_bossdoor}
+            {class: GameEnvBackground, data: image_data_chamber},
+            {class: Player, data: sprite_data_mc},
+            // {class: Npc, data: sprite_data_zombie},
+            {class: Npc, data: sprite_data_bossdoor}
         ];
 
     };
