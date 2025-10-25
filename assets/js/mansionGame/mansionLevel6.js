@@ -50,7 +50,7 @@ class MansionLevel6 {
             keypress: {up: 87, left: 65, down: 83, right: 68} // W, A, S, D
         };
 
-        /*
+        
         // This is the data for the zombie NPC charecter
         const sprite_src_zombie_npc = path + "/images/gamify/zombieNpc.png";
         const sprite_greet_zombie_npc = "I heard the boss is waiting for you... enter if you dare.";
@@ -58,9 +58,9 @@ class MansionLevel6 {
             id: 'ZombieNPC',
             greeting: sprite_greet_zombie_npc,
             src: sprite_src_zombie_npc,
-            SCALE_FACTOR: 5,
-            ANIMATION_RATE: 20,
-            pixels: {height: 1200, width: 3600},
+            SCALE_FACTOR: 6,
+            ANIMATION_RATE: 100,
+            pixels: {width: 3600, height: 1200},
             INIT_POSITION: {x: (width / 2), y: (height / 2)},
             orientation: {rows: 1, columns: 3},
             left: {row: 0, start: 0, columns: 3},
@@ -68,7 +68,8 @@ class MansionLevel6 {
             dialogues: [  // The Zombie needs to warn the player against going through the doors
                 "I heard the boss is waiting for you...",
                 "Enter if you dare... he's waiting for you...",
-                "Don't go in! I heard the Reaper himself was in there."
+                "I heard the Reaper himself was in there.",
+                "Make sure to balance your offense and defense when taking on the Reaper."
             ],
 
             reaction: function() {
@@ -89,7 +90,7 @@ class MansionLevel6 {
             }
 
         }
-        */
+        
 
         // invisible sprite for door collision that handles going to lv6 battle room
         const sprite_src_bossdoor = path + "/images/gamify/invisDoorCollisionSprite.png";
@@ -165,7 +166,7 @@ class MansionLevel6 {
                                 document.body.appendChild(fadeOverlay);
                                 
                                 console.log("Starting music...");
-                                const audio = new Audio('/assets/sounds/mansionGame/SkeletonLord.mp3');
+                                const audio = new Audio(path + "/assets/sounds/mansionGame/SkeletonLord.mp3");
                                 audio.play()
                                     .then(() => {
                                         console.log('Playing audio...');
@@ -242,7 +243,7 @@ class MansionLevel6 {
         this.classes = [
             {class: GameEnvBackground, data: image_data_chamber},
             {class: Player, data: sprite_data_mc},
-            // {class: Npc, data: sprite_data_zombie},
+            {class: Npc, data: sprite_data_zombie},
             {class: Npc, data: sprite_data_bossdoor}
         ];
 
