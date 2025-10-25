@@ -85,7 +85,7 @@ class MansionLevel6 {
                 } else {
                     console.log(sprite_greet_zombie_npc);
                 }           
-            },
+            }
 
         }
 
