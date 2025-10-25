@@ -23,37 +23,9 @@ class MansionLevel6 {
             pixels: {height: 580, width: 1038},
             mode: 'stretch'
         };
-
-        /*
-        const sprite_src_mc = path + "/images/gamify/mansionMcMove.png";
-        const MC_SCALE_FACTOR = 1;
-        const sprite_data_mc = {
-            id: 'mc',
-            src: sprite_src_mc,
-            SCALE_FACTOR: MC_SCALE_FACTOR,
-            STEP_FACTOR: 500,
-            ANIMATION_RATE: 30,
-            INIT_POSITION: {x: (width/2), y: (height/2)},
-            pixels: {height: 3600, width: 1200},
-            orientation: {rows: 1, columns: 3},
-            // for now I'm just making the animation for all directions the same.
-            down: {row: 0, start:0, columns:3},
-            downRight: {row: 0, start: 0, columns: 3, rotate: Math.PI/16 },
-            downLeft: {row: 0, start: 0, columns: 3, rotate: -Math.PI/16 },
-            left: {row: 0, start: 0, columns: 3 },
-            right: {row: 0, start: 0, columns: 3 },
-            up: {row: 0, start: 0, columns: 3 },
-            upLeft: {row: 0, start: 0, columns: 3, rotate: Math.PI/16 },
-            upRight: {row: 0, start: 0, columns: 3, rotate: -Math.PI/16 },  
-            hitbox: { widthPercentage: 0.5, heightPercentage: 0.4 },
-            keypress: { up: 87, left: 65, down: 83, right: 68 } // W, A, S, D
-        };
-        */
-
-        
         
         const sprite_src_chillguy = path + "/images/gamify/spookMcWalk.png"; // be sure to include the path
-        const CHILLGUY_SCALE_FACTOR = 50;
+        const CHILLGUY_SCALE_FACTOR = 10;
         const sprite_data_chillguy = {
             id: 'Spook',
             greeting: "Hi I am Spook.",
@@ -63,7 +35,7 @@ class MansionLevel6 {
             ANIMATION_RATE: 10,
             INIT_POSITION: { x: (width/2 - width/(5*CHILLGUY_SCALE_FACTOR)), y: height - (height/CHILLGUY_SCALE_FACTOR) }, 
             pixels: {height: 2400, width: 3600},
-            orientation: {rows: 2, columns: 3 },
+            orientation: {rows: 3, columns: 2 },
             down: {row: 1, start: 0, columns: 3 },
             downRight: {row: 1, start: 0, columns: 3, rotate: Math.PI/16 },
             downLeft: {row: 0, start: 0, columns: 3, rotate: -Math.PI/16 },
