@@ -30,7 +30,7 @@ class MansionLevel6 {
         const MC_SCALE_FACTOR = 6;
         const sprite_data_mc = {
             id: 'Spook',
-            greeting: "Hi I am Spook.",
+            greeting: "Hi, I am Spook.",
             src: sprite_src_mc,
             SCALE_FACTOR: MC_SCALE_FACTOR,
             STEP_FACTOR: 1500,
@@ -59,18 +59,18 @@ class MansionLevel6 {
             id: 'ZombieNPC',
             greeting: sprite_greet_zombie_npc,
             src: sprite_src_zombie_npc,
-            SCALE_FACTOR: 6,
+            SCALE_FACTOR: 9,
             ANIMATION_RATE: 100,
             pixels: {width: 3600, height: 1200},
             INIT_POSITION: {x: (width / 2), y: (height / 2)},
             orientation: {rows: 1, columns: 3},
             left: {row: 0, start: 0, columns: 3},
-            hitbox: {widthPercentage: 0.3, heightPercentage: 0.5},
-            dialogues: [  // The Zombie needs to warn the player against going through the doors
+            hitbox: {widthPercentage: 0.1, heightPercentage: 0.1},
+            dialogues: [
+                // The Zombie needs to warn the player against going through the doors
                 "I heard the boss is waiting for you...",
                 "Enter if you dare... he's waiting for you...",
                 "I heard the Reaper himself was in there.",
-                "Make sure to balance your offense and defense when taking on the Reaper."
             ],
 
             reaction: function() {
@@ -184,7 +184,33 @@ class MansionLevel6 {
                                 // Fade in
                                 requestAnimationFrame(() => {
                                     fadeOverlay.style.opacity = '1';
-                                    
+                                            
+                                    // Create a centered transition text that appears during the fade
+                                    const transitionText = document.createElement('div');
+                                    transitionText.textContent = 'YOUR DESTINY AWAITS';
+                                    Object.assign(transitionText.style, {
+                                        position: 'fixed',
+                                        top: '50%',
+                                        left: '50%',
+                                        transform: 'translate(-50%, -50%)',
+                                        color: '#fff',
+                                        fontSize: '6vw',
+                                        fontWeight: '700',
+                                        textAlign: 'center',
+                                        zIndex: '10000',
+                                        pointerEvents: 'none',
+                                        opacity: '0',
+                                        transition: 'opacity 300ms ease-in-out',
+                                        textShadow: '0 2px 6px rgba(0,0,0,0.8)'
+                                    });
+
+                                    document.body.appendChild(transitionText);
+
+                                    // Fade the text in shortly after the overlay starts fading
+                                    requestAnimationFrame(() => {
+                                        transitionText.style.opacity = '1';
+                                    });
+
                                     // After fade in, transition to End level
                                     setTimeout(() => {
                                         // Clean up current level properly
@@ -221,8 +247,13 @@ class MansionLevel6 {
                                         // Fade out overlay
                                         setTimeout(() => {
                                             fadeOverlay.style.opacity = '0';
+                                            // also fade and remove the transition text
+                                            if (transitionText) {
+                                                transitionText.style.opacity = '0';
+                                            }
                                             setTimeout(() => {
-                                                document.body.removeChild(fadeOverlay);
+                                                try { document.body.removeChild(fadeOverlay); } catch(e) {}
+                                                try { if (transitionText) document.body.removeChild(transitionText); } catch(e) {}
                                             }, 1000);
                                         }, 500);
                                     }, 1000);
