@@ -24,16 +24,16 @@ class MansionLevel6 {
             mode: 'stretch'
         };
         
-        const sprite_src_chillguy = path + "/images/gamify/spookMcWalk.png"; // be sure to include the path
-        const CHILLGUY_SCALE_FACTOR = 9.5;
-        const sprite_data_chillguy = {
+        const sprite_src_mc = path + "/images/gamify/spookMcWalk.png"; // be sure to include the path
+        const MC_SCALE_FACTOR = 9;
+        const sprite_data_mc = {
             id: 'Spook',
             greeting: "Hi I am Spook.",
-            src: sprite_src_chillguy,
-            SCALE_FACTOR: CHILLGUY_SCALE_FACTOR,
+            src: sprite_src_mc,
+            SCALE_FACTOR: MC_SCALE_FACTOR,
             STEP_FACTOR: 1500,
             ANIMATION_RATE: 10,
-            INIT_POSITION: { x: (width/2 - width/(5*CHILLGUY_SCALE_FACTOR)), y: height - (height/CHILLGUY_SCALE_FACTOR) }, 
+            INIT_POSITION: { x: (width/2 - width/(5*MC_SCALE_FACTOR)), y: height - (height/MC_SCALE_FACTOR) }, 
             pixels: {height: 2400, width: 3600},
             orientation: {rows: 2, columns: 3 },
             down: {row: 1, start: 0, columns: 3 },
@@ -127,7 +127,7 @@ class MansionLevel6 {
                 
                 // Show portal dialogue with buttons
                 this.dialogueSystem.showDialogue(
-                    "Do you wish to battle the Reaper?",
+                    "Are you ready to battle the Reaper?",
                     "Door",
                     this.spriteData.src
                 );
@@ -225,7 +225,7 @@ class MansionLevel6 {
 
         this.classes = [
             { class: GameEnvBackground, data: image_data_chamber },
-            { class: Player, data: sprite_data_chillguy },
+            { class: Player, data: sprite_data_mc },
             // { class: Npc, data: sprite_data_zombie},
             { class: Npc, data: sprite_data_bossdoor}
         ];
