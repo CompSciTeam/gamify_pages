@@ -181,7 +181,7 @@ class MansionLevel6 {
 
                                     // Create a centered transition text that will type itself
                                     const transitionText = document.createElement('div');
-                                    const fullText = 'YOUR DESTINY AWAITS';
+                                    const fullText = 'YOUR FATE HAS BEEN SEALED';
                                     transitionText.textContent = '';
                                     const typingSpeed = 80; // ms per char
                                     Object.assign(transitionText.style, {
@@ -189,7 +189,7 @@ class MansionLevel6 {
                                         top: '50%',
                                         left: '50%',
                                         transform: 'translate(-50%, -50%)',
-                                        color: 'rgba(255,255,255,1)',
+                                        color: 'rgba(255, 0, 0, 1)',
                                         fontSize: '6vw',
                                         fontWeight: '800',
                                         textAlign: 'center',
@@ -197,7 +197,7 @@ class MansionLevel6 {
                                         pointerEvents: 'none',
                                         opacity: '0',
                                         transition: `opacity ${Math.min(600, fadeOutMs)}ms ease-in-out`,
-                                        textShadow: '0 3px 8px rgba(0,0,0,0.85)',
+                                        textShadow: '0 3px 8px rgba(181, 0, 0, 0.85)',
                                         letterSpacing: '0.05em'
                                     });
 
@@ -260,21 +260,37 @@ class MansionLevel6 {
                                         console.log("Transitioning to battle room level...");
                                         gameControl.transitionToLevel();
                                         
-                                        // Fade out overlay after transition
+                                        // Fade out overlay after transition (with untype animation)
                                         setTimeout(() => {
-                                            // Fade out both text and overlay together
-                                            fadeOverlay.style.transition = `opacity ${fadeOutMs}ms ease-in-out`;
-                                            transitionText.style.transition = `opacity ${fadeOutMs}ms ease-in-out`;
-                                            
-                                            fadeOverlay.style.opacity = '0';
-                                            transitionText.style.opacity = '0';
+                                            const untypeSpeed = 50; // ms per character removal
+                                            let untypeIndex = fullText.length - 1;
 
-                                            // Remove after fade-out completes
-                                            setTimeout(() => {
-                                                try { document.body.removeChild(fadeOverlay); } catch(e) {}
-                                                try { document.body.removeChild(transitionText); } catch(e) {}
-                                            }, fadeOutMs + 150);
-                                        }, waitMs + 300); // <- happens after fade-in + typing finishes
+                                            const untypeInterval = setInterval(() => {
+                                                if (untypeIndex >= 0) {
+                                                    transitionText.textContent = fullText.substring(0, untypeIndex);
+                                                    untypeIndex--;
+                                                } else {
+                                                    clearInterval(untypeInterval);
+
+                                                    // Once untyped, fade everything out
+                                                    fadeOverlay.style.transition = `opacity ${fadeOutMs}ms ease-in-out`;
+                                                    transitionText.style.transition = `opacity ${fadeOutMs}ms ease-in-out`;
+                                                    fadeOverlay.style.opacity = '0';
+                                                    transitionText.style.opacity = '0';
+
+                                                    // Remove both elements after fade-out completes
+                                                    setTimeout(() => {
+                                                        try { document.body.removeChild(fadeOverlay); } catch (e) {}
+                                                        try { document.body.removeChild(transitionText); } catch (e) {}
+
+                                                        // Now safely start the battle level
+                                                        console.log("Transitioning to battle room level...");
+                                                        gameControl.transitionToLevel();
+                                                    }, fadeOutMs + 150);
+                                                }
+                                            }, untypeSpeed);
+                                        }, waitMs + 300);
+
 
                                     }, waitMs);
                                 });
