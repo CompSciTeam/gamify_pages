@@ -25,13 +25,13 @@ class MansionLevel6 {
         };
         
         const sprite_src_chillguy = path + "/images/gamify/spookMcWalk.png"; // be sure to include the path
-        const CHILLGUY_SCALE_FACTOR = 6;
+        const CHILLGUY_SCALE_FACTOR = 9;
         const sprite_data_chillguy = {
             id: 'Spook',
             greeting: "Hi I am Spook.",
             src: sprite_src_chillguy,
             SCALE_FACTOR: CHILLGUY_SCALE_FACTOR,
-            STEP_FACTOR: 1000,
+            STEP_FACTOR: 1500,
             ANIMATION_RATE: 10,
             INIT_POSITION: { x: (width/2 - width/(5*CHILLGUY_SCALE_FACTOR)), y: height - (height/CHILLGUY_SCALE_FACTOR) }, 
             pixels: {height: 2400, width: 3600},
