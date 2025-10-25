@@ -60,7 +60,7 @@ class MansionLevel6 {
             src: sprite_src_chillguy,
             SCALE_FACTOR: CHILLGUY_SCALE_FACTOR,
             STEP_FACTOR: 1000,
-            ANIMATION_RATE: 50,
+            ANIMATION_RATE: 10,
             INIT_POSITION: { x: (width/2 - width/(5*CHILLGUY_SCALE_FACTOR)), y: height - (height/CHILLGUY_SCALE_FACTOR) }, 
             pixels: {height: 384, width: 512},
             orientation: {rows: 3, columns: 4 },
