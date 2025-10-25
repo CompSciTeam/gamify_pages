@@ -25,7 +25,7 @@ class MansionLevel6 {
         };
         
         const sprite_src_mc = path + "/images/gamify/spookMcWalk.png"; // be sure to include the path
-        const MC_SCALE_FACTOR = 9;
+        const MC_SCALE_FACTOR = 6;
         const sprite_data_mc = {
             id: 'Spook',
             greeting: "Hi I am Spook.",
