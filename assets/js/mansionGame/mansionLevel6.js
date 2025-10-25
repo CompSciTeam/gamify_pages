@@ -35,7 +35,7 @@ class MansionLevel6 {
             ANIMATION_RATE: 10,
             INIT_POSITION: { x: (width/2 - width/(5*CHILLGUY_SCALE_FACTOR)), y: height - (height/CHILLGUY_SCALE_FACTOR) }, 
             pixels: {height: 2400, width: 3600},
-            orientation: {rows: 3, columns: 2 },
+            orientation: {rows: 2, columns: 3 },
             down: {row: 1, start: 0, columns: 3 },
             downRight: {row: 1, start: 0, columns: 3, rotate: Math.PI/16 },
             downLeft: {row: 0, start: 0, columns: 3, rotate: -Math.PI/16 },
