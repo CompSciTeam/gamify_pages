@@ -23,7 +23,7 @@ class MansionLevel6_BattleRoom {
             SCALE_FACTOR: MC_SCALE_FACTOR,
             STEP_FACTOR: 500,
             ANIMATION_RATE: 30,
-            INIT_POSITION: {x: (width / 3), y: (height - (height/MC_SCALE_FACTOR))},
+            INIT_POSITION: {x: (width / 3), y: (height * 0.75)},
             pixels: {height: 3600, width: 1200},
             orientation: {rows: 1, columns: 3},
             // for now I'm just making the animation for all directions the same.
@@ -47,7 +47,7 @@ class MansionLevel6_BattleRoom {
             SCALE_FACTOR: ENEMY_SCALE_FACTOR,
             STEP_FACTOR: 500,
             ANIMATION_RATE: 30,
-            INIT_POSITION: {x: (2 * width / 3), y: (1.1*height - (height/ENEMY_SCALE_FACTOR))},
+            INIT_POSITION: {x: (2 * width / 3), y: (height * 0.75)},
             pixels: {height: 10800, width: 3600},
             orientation: {rows: 1, columns: 3}  
         }
