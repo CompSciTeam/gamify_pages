@@ -48,7 +48,7 @@ class MansionLevel6_BattleRoom {
             STEP_FACTOR: 500,
             ANIMATION_RATE: 30,
             INIT_POSITION: {x: (2 * width / 3), y: (height * 0.75)},
-            pixels: {height: 10800, width: 3600},
+            pixels: {height: 3600, width: 1200},
             orientation: {rows: 1, columns: 3}  
         }
 
