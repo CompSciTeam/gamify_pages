@@ -78,7 +78,7 @@ class MansionLevel6_BattleRoom {
             INIT_POSITION: {x: (2 * width / 3), y: (height * 0.75)},
             pixels: {height: 3600, width: 1200},
             orientation: {rows: 1, columns: 1},
-            hitbox: {widthPercentage: 0.6, heightPercentage: 0.6},
+            hitbox: {widthPercentage: 0.45, heightPercentage: 0.2},
             // Boss specific settings
             projectileSpeed: 8,
             attackInterval: 2000,  // Time between attacks in ms
