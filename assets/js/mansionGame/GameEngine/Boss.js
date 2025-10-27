@@ -45,48 +45,64 @@ class Boss extends Enemy {
 
         // Add code here to move each arrow and fireball towards the player
         for (const fireball of this.fireballs) {
-            fireball.update(this.projectileSpeed);
+            fireball.update();
         }
         for (const arrow of this.arrows) {
-            arrow.update(this.projectileSpeed);
+            arrow.update();
         }
 
         // If the Reaper is throwing the scythe, then don't move (to simplify calculations)
         if (this.isThrowingScythe) {
-            return;
-        }
 
-        // Direct copy-paste from the Enderman in the adventure game -- VERIFY THIS WORKS
-        // Find all player objects
-        const players = this.gameEnv.gameObjects.filter(obj => 
-            obj.constructor.name === 'Player'
-        );
+            let scythesToRemove = [];
 
-        if (players.length === 0) return;
+            this.scythes.forEach(element => {
+                element.update();
+                if (element.revComplete){
+                    scythesToRemove.push(element);
+                }
+            });
+
+            scythesToRemove.forEach(element => {
+                element.destroy();
+                this.scythes.splice(1, this.scythes.indexOf(element));
+            });
+
+        } else {
+
+            // Direct copy-paste from the Enderman in the adventure game -- VERIFY THIS WORKS
+            // Find all player objects
+            const players = this.gameEnv.gameObjects.filter(obj => 
+                obj.constructor.name === 'Player'
+            );
+
+            if (players.length === 0) return;
         
-        // Find nearest player
-        let nearest = players[0];
-        let minDist = Infinity;
 
-        for (const player of players) {
-            const dx = player.position.x - this.position.x;
-            const dy = player.position.y - this.position.y;
-            const dist = Math.sqrt(dx*dx + dy*dy);
-            if (dist < minDist) {
-                minDist = dist;
-                nearest = player;
+            // Find nearest player
+            let nearest = players[0];
+            let minDist = Infinity;
+
+            for (const player of players) {
+                const dx = player.position.x - this.position.x;
+                const dy = player.position.y - this.position.y;
+                const dist = Math.sqrt(dx*dx + dy*dy);
+                if (dist < minDist) {
+                    minDist = dist;
+                    nearest = player;
+                }
             }
+
+            // Move towards nearest player
+            const Reaperspeed = 0.25; // Adjust speed as needed -- Enderman speed from adventureGame: 1.5
+            const dx = nearest.position.x - this.position.x;
+            const dy = nearest.position.y - this.position.y;
+            const ReaperPlayerangle = Math.atan2(dy, dx);
+
+            // Update position
+            this.position.x += Math.cos(ReaperPlayerangle) * Reaperspeed;
+            this.position.y += Math.sin(ReaperPlayerangle) * Reaperspeed;
         }
-
-        // Move towards nearest player
-        const Reaperspeed = 0.5; // Adjust speed as needed -- Enderman speed from adventureGame: 1.5
-        const dx = nearest.position.x - this.position.x;
-        const dy = nearest.position.y - this.position.y;
-        const ReaperPlayerangle = Math.atan2(dy, dx);
-
-        // Update position
-        this.position.x += Math.cos(ReaperPlayerangle) * Reaperspeed;
-        this.position.y += Math.sin(ReaperPlayerangle) * Reaperspeed;
     }
 
     // For now, disable the Reaper from exploding (we may change this later)
@@ -97,23 +113,20 @@ class Boss extends Enemy {
 
     // Now we'll define attacks, starting with the scythe
     scytheAttack() {
-        this.isThrowingScythe = true;
-        // Put logic for scytheAttack here
         this.scythes.push(new Boomerang(this.gameEnv, nearest.position.x, nearest.position.y, this.position.x, this.position.y));
-        // TODO: finish logic for scythe updates & collision with player
-        this.isThrowingScythe = false;
+        this.isThrowingScythe = true;
     }
 
     // This is the fireball attack, create a new Fireball
     fireballAttack() {
         // Add attack logic here
-        this.fireballs.push(new Projectile());
+        this.fireballs.push(new Projectile(this.gameEnv, nearest.position.x, nearest.position.y, this.position.x, this.position.y, "FIREBALL"));
     }
 
     // This is the arrow attak, create a new arrow
     arrowAttack() {
         // Add attack logic here
-        this.arrows.push(new Projectile());
+        this.arrows.push(new Projectile(this.gameEnv, nearest.position.x, nearest.position.y, this.position.x, this.position.y, "ARROW"));
     }
 }
 
