@@ -104,9 +104,7 @@ class MansionLevel6 {
             SCALE_FACTOR: 6,
             ANIMATION_RATE: 100,
             pixels: {width: 2029, height: 2025},
-            //INIT_POSITION: { x: (width * 2 / 5), y: (height / 2)},  // This is the old init position
-            //INIT_POSITION: {x: (width / 2), y: (height / 8)},  // This init position has the correct height
-            INIT_POSITION: {x: (width * 19 / 40), y: (height / 8)},
+            INIT_POSITION: {x: (width * 37 / 80), y: (height / 8)},
             orientation: {rows: 1, columns: 1},
             down: {row: 0, start: 0, columns: 1},
             hitbox: {widthPercentage: 0.1, heightPercentage: 0.2},
