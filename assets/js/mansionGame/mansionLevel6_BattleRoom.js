@@ -1,6 +1,6 @@
 import GameEnvBackground  from "./GameEngine/GameEnvBackground.js";
 import Player from "./GameEngine/Player.js";
-import Enemy from './GameEngine/Enemy.js';
+import Boss from './GameEngine/Boss.js';
 
 class MansionLevel6_BattleRoom {
     constructor(gameEnv) {
@@ -40,22 +40,28 @@ class MansionLevel6_BattleRoom {
         };
 
         const sprite_src_enemy = path + "/images/gamify/enemyBody.png";
-        const ENEMY_SCALE_FACTOR = 1;
-        const sprite_enemy_data = {
-            id: 'eb',
+        const BOSS_SCALE_FACTOR = 2;  // Make boss bigger
+        const sprite_boss_data = {
+            id: 'reaper',
             src: sprite_src_enemy,
-            SCALE_FACTOR: ENEMY_SCALE_FACTOR,
-            STEP_FACTOR: 500,
+            SCALE_FACTOR: BOSS_SCALE_FACTOR,
+            STEP_FACTOR: 800,  // Slower movement
             ANIMATION_RATE: 30,
             INIT_POSITION: {x: (2 * width / 3), y: (height * 0.75)},
             pixels: {height: 3600, width: 1200},
-            orientation: {rows: 1, columns: 3}  
-        }
+            orientation: {rows: 1, columns: 3},
+            hitbox: {widthPercentage: 0.6, heightPercentage: 0.6},
+            // Boss specific settings
+            projectileSpeed: 8,
+            attackInterval: 2000,  // Time between attacks in ms
+            projectileTypes: ['FIREBALL', 'ARROW'],  // Available projectile types
+            initialHealth: 1500
+        };
 
         this.classes = [
             {class: GameEnvBackground, data: image_data_floor},
             {class: Player, data: sprite_data_mc},
-            {class: Enemy, data: sprite_enemy_data}
+            {class: Boss, data: sprite_boss_data}
         ];
 
     };
