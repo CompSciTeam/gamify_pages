@@ -8,7 +8,7 @@ class MansionLevel6_BattleRoom {
         let height = gameEnv.innerHeight;
         let path = gameEnv.path;
 
-        const image_src_floor = path + "/images/gamify/tiledFloor.png";
+        const image_src_floor = path + "/images/mansionGame/tiledFloor.png";
         const image_data_floor = {
             name: 'floor',
             src: image_src_floor,
@@ -17,7 +17,7 @@ class MansionLevel6_BattleRoom {
 
         /*
         // Defnine the player
-        const sprite_src_mc = path + "/images/gamify/playerMove.png";
+        const sprite_src_mc = path + "/images/mansionGame/playerMove.png";
         const MC_SCALE_FACTOR = 1;
         const sprite_data_mc = {
             id: 'mc',
@@ -44,7 +44,7 @@ class MansionLevel6_BattleRoom {
 
         // Testing wether copying the player from the first room works
         //Player appears but doesm't move
-        const sprite_src_mc = path + "/images/gamify/spookMcWalk.png"; // be sure to include the path
+        const sprite_src_mc = path + "/images/mansionGame/spookMcWalk.png"; // be sure to include the path
         const MC_SCALE_FACTOR = 6;
         const sprite_data_mc = {
             id: 'Spook',
@@ -69,7 +69,7 @@ class MansionLevel6_BattleRoom {
         };
 
         // Define the Reaper boss (enabled for the battle room)
-        //const sprite_src_enemy = path + "/images/gamify/ReaperMainBody.png";
+        //const sprite_src_enemy = path + "/images/mansionGame/ReaperMainBody.png";
         //const BOSS_SCALE_FACTOR = 2;  // Make boss bigger
         //const sprite_boss_data = {
             //id: 'reaper',

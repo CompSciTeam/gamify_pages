@@ -16,7 +16,7 @@ class MansionLevel6 {
         let path = gameEnv.path;
 
         // This is the background image data
-        const image_src_chamber = path + "/images/gamify/bgBossIntroChamber.png"
+        const image_src_chamber = path + "/images/mansionGame/bgBossIntroChamber.png"
         const image_data_chamber = {
             name: 'bossintro',
             greeting: "You hear a faint echo from behind the ebony doors.",
@@ -26,7 +26,7 @@ class MansionLevel6 {
         };
         
         // This is the data for the player
-        const sprite_src_mc = path + "/images/gamify/spookMcWalk.png"; // be sure to include the path
+        const sprite_src_mc = path + "/images/mansionGame/spookMcWalk.png"; // be sure to include the path
         const MC_SCALE_FACTOR = 6;
         const sprite_data_mc = {
             id: 'Spook',
@@ -53,7 +53,7 @@ class MansionLevel6 {
 
         // This is the data for the zombie NPC charecter
         /*
-        const sprite_src_zombie_npc = path + "/images/gamify/zombieNpc.png";
+        const sprite_src_zombie_npc = path + "/images/mansionGame/zombieNpc.png";
         const sprite_greet_zombie_npc = "I heard the boss is waiting for you... enter if you dare.";
         const sprite_data_zombie = {
             id: 'ZombieNPC',
@@ -94,7 +94,7 @@ class MansionLevel6 {
         
 
         // invisible sprite for door collision that handles going to lv6 battle room
-        const sprite_src_bossdoor = path + "/images/gamify/invisDoorCollisionSprite.png";
+        const sprite_src_bossdoor = path + "/images/mansionGame/invisDoorCollisionSprite.png";
         const sprite_greet_bossdoor = "Battle the Reaper? Press E";
         const sprite_data_bossdoor = {
             id: 'Door',
