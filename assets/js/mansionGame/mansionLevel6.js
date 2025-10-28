@@ -107,7 +107,6 @@ class MansionLevel6 {
             orientation: {rows: 1, columns: 1},
             down: {row: 0, start: 0, columns: 1},
             hitbox: {widthPercentage: 0.1, heightPercentage: 0.2},
-            // Add dialogues array for random messages
             dialogues: [
                 "Many have entered. Few have returned.",
                 "Dangerous things await you beyond this door..",
