@@ -43,6 +43,7 @@ class MansionLevel6_BattleRoom {
         */
 
         // Testing wether copying the player from the first room works
+        //Player appears but doesm't move
         const sprite_src_mc = path + "/images/gamify/spookMcWalk.png"; // be sure to include the path
         const MC_SCALE_FACTOR = 6;
         const sprite_data_mc = {
