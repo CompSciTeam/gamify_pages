@@ -50,7 +50,7 @@ class MansionLevel6_BattleRoom {
             greeting: "Hi, I am Spook.",
             src: sprite_src_mc,
             SCALE_FACTOR: MC_SCALE_FACTOR,
-            STEP_FACTOR: 800,
+            STEP_FACTOR: 1200,
             ANIMATION_RATE: 10,
             INIT_POSITION: { x: (width / 2 - width / (5 * MC_SCALE_FACTOR)), y: height - (height / MC_SCALE_FACTOR)}, 
             pixels: {height: 2400, width: 3600},
@@ -68,6 +68,7 @@ class MansionLevel6_BattleRoom {
         };
 
         // Define the Reaper enemy
+        /*
         const sprite_src_enemy = path + "/images/gamify/ReaperMainBody.png";
         const BOSS_SCALE_FACTOR = 2;  // Make boss bigger
         const sprite_boss_data = {
@@ -86,11 +87,12 @@ class MansionLevel6_BattleRoom {
             projectileTypes: ['FIREBALL', 'ARROW'],  // Available projectile types
             initialHealth: 1500
         };
+        */
 
         this.classes = [
             {class: GameEnvBackground, data: image_data_floor},
             {class: Player, data: sprite_data_mc},
-            {class: Boss, data: sprite_boss_data}
+            //  {class: Boss, data: sprite_boss_data}
         ];
 
     };
