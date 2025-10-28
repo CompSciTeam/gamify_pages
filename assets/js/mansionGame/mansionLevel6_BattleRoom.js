@@ -67,8 +67,7 @@ class MansionLevel6_BattleRoom {
             keypress: {up: 87, left: 65, down: 83, right: 68} // W, A, S, D
         };
 
-        // Define the Reaper enemy
-        /*
+        // Define the Reaper boss (enabled for the battle room)
         const sprite_src_enemy = path + "/images/gamify/ReaperMainBody.png";
         const BOSS_SCALE_FACTOR = 2;  // Make boss bigger
         const sprite_boss_data = {
@@ -77,7 +76,8 @@ class MansionLevel6_BattleRoom {
             SCALE_FACTOR: BOSS_SCALE_FACTOR,
             STEP_FACTOR: 800,  // Slower movement
             ANIMATION_RATE: 30,
-            INIT_POSITION: {x: (2 * width / 3), y: (height * 0.75)},
+            // spawn near the right side of the room
+            INIT_POSITION: {x: Math.floor(width * 0.7), y: Math.floor(height * 0.6)},
             pixels: {height: 300, width: 300},
             orientation: {rows: 1, columns: 1},
             hitbox: {widthPercentage: 0.45, heightPercentage: 0.2},
@@ -87,12 +87,11 @@ class MansionLevel6_BattleRoom {
             projectileTypes: ['FIREBALL', 'ARROW'],  // Available projectile types
             initialHealth: 1500
         };
-        */
 
         this.classes = [
             {class: GameEnvBackground, data: image_data_floor},
             {class: Player, data: sprite_data_mc},
-            //  {class: Boss, data: sprite_boss_data}
+            {class: Boss, data: sprite_boss_data}
         ];
 
     };
