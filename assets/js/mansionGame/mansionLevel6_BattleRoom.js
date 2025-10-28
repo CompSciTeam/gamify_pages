@@ -67,6 +67,7 @@ class MansionLevel6_BattleRoom {
             keypress: {up: 87, left: 65, down: 83, right: 68} // W, A, S, D
         };
 
+        // Define the Reaper enemy
         const sprite_src_enemy = path + "/images/gamify/ReaperMainBody.png";
         const BOSS_SCALE_FACTOR = 2;  // Make boss bigger
         const sprite_boss_data = {
@@ -76,7 +77,7 @@ class MansionLevel6_BattleRoom {
             STEP_FACTOR: 800,  // Slower movement
             ANIMATION_RATE: 30,
             INIT_POSITION: {x: (2 * width / 3), y: (height * 0.75)},
-            pixels: {height: 3600, width: 1200},
+            pixels: {height: 300, width: 300},
             orientation: {rows: 1, columns: 1},
             hitbox: {widthPercentage: 0.45, heightPercentage: 0.2},
             // Boss specific settings
