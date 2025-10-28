@@ -52,6 +52,7 @@ class MansionLevel6 {
 
 
         // This is the data for the zombie NPC charecter
+        /*
         const sprite_src_zombie_npc = path + "/images/gamify/zombieNpc.png";
         const sprite_greet_zombie_npc = "I heard the boss is waiting for you... enter if you dare.";
         const sprite_data_zombie = {
@@ -88,8 +89,8 @@ class MansionLevel6 {
                     console.log(sprite_greet_zombie_npc);
                 }           
             }
-
         }
+        */
         
 
         // invisible sprite for door collision that handles going to lv6 battle room
@@ -305,7 +306,7 @@ class MansionLevel6 {
         this.classes = [
             {class: GameEnvBackground, data: image_data_chamber},
             {class: Player, data: sprite_data_mc},
-            {class: Npc, data: sprite_data_zombie},
+            // {class: Npc, data: sprite_data_zombie},
             {class: Npc, data: sprite_data_bossdoor}
         ];
 
