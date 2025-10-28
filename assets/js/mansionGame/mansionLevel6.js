@@ -58,13 +58,13 @@ class MansionLevel6 {
             id: 'ZombieNPC',
             greeting: sprite_greet_zombie_npc,
             src: sprite_src_zombie_npc,
-            SCALE_FACTOR: 9,
+            SCALE_FACTOR: 15,
             ANIMATION_RATE: 100,
             pixels: {width: 1200, height: 3600},
             INIT_POSITION: {x: (width / 2), y: (height / 2)},
-            orientation: {rows: 1, columns: 3},
-            left: {row: 0, start: 0, columns: 3},
-            hitbox: {widthPercentage: 0.1, heightPercentage: 0.1},
+            orientation: {rows: 1, columns: 1},
+            // left: {row: 0, start: 0, columns: 3},
+            hitbox: {widthPercentage: 0.45, heightPercentage: 0.2},
             dialogues: [
                 // The Zombie needs to warn the player against going through the doors
                 "I heard the boss is waiting for you...",
