@@ -1,6 +1,6 @@
 import Enemy from '../GameEngine/Enemy.js';
-import Boomerang from './Boomerang.js';
-import Projectile from '../GameEngine/Projectile.js';
+import Boomerang from '../CustomGameClasses/Boomerang.js';
+import Projectile from '../CustomGameClasses/Projectile.js';
 
 /*  This is a file for the Game Engine made by the Tinkerers (lvl6)
     Do not delete this file.
