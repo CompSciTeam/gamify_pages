@@ -11,7 +11,7 @@ class Projectile extends Boomerang {
         this.source_coords = (sourcex, sourcey); // reaper coords at scythe thrown
         this.ellipse_center = ((targetx+sourcex)/2, (targety+sourcey)/2);
         this.ellipse_width = Math.sqrt((targetx-sourcex)**2 + (targety-sourcey)**2);
-        this.ellipse_height = this.ellipse_height/15;
+        this.ellipse_height = 0.01;
         this.ellipse_tilt = Math.atan((sourcey-targety)/(sourcex-targetx));
         this.radian_prog = 0;
         this.radian_limit = Math.PI;
